@@ -111,20 +111,23 @@ app.get("/CreatePost", () => {
 app.post(
   "/CreatePost",
   async ({ body }: { body: { title: string; body: string } }) => {
-    await db.update(({ posts }) =>
-      posts.push({
-        userId: 2,
-        title: body.title,
-        body: body.body,
-        postId: posts.length + 1,
-        comments: [
-          {
-            commentBody: "Please Be Nice This is a public forum",
-            commentCreatedBy: 1,
-          },
-        ],
-      }),
-    );
+    if (body.body != "" && body.title != "") {
+      await db.update(({ posts }) =>
+        posts.push({
+          userId: 2,
+          title: body.title,
+          body: body.body,
+          postId: posts.length + 1,
+          comments: [
+            {
+              commentBody: "Please Be Nice This is a public forum",
+              commentCreatedBy: 1,
+            },
+          ],
+        }),
+      );
+    }
+    console.log(body.body + "" + body.title);
     return (
       <BaseHTML title="XD">
         <h1>Go Back To The Post Page And See Your Post!</h1>
