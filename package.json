@@ -1,15 +1,21 @@
 {
   "name": "elyiapp",
   "version": "1.0.50",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "bun run --watch src/index.ts"
+    "dev": "bun run --watch src/index.tsx"
   },
   "dependencies": {
-    "elysia": "latest"
+    "@elysiajs/html": "^1.0.2",
+    "@elysiajs/static": "^1.0.2",
+    "elysia": "latest",
+    "lowdb": "^7.0.1"
   },
   "devDependencies": {
-    "bun-types": "latest"
+    "bun-types": "latest",
+    "vite": "^5.2.6",
+    "prettier": "^3.2.5"
   },
   "module": "src/index.js"
 }
