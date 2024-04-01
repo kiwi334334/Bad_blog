@@ -38,8 +38,10 @@ app.get("/posts", async () => {
           <a href={"/posts/" + (post.postId - 1)}>
             <hr class={"border-slate-900"} />
             <div class={"bg-grey-500"}>
-              <h1 class={"text-4xl"}>{post.title.substring(0, 10)}...</h1>
-              <p>
+              <h1 safe class={"text-4xl"}>
+                {post.title.substring(0, 10)}...
+              </h1>
+              <p safe>
                 {post.body.substring(0, 15)}(By{" "}
                 {users[post.userId - 1].username})
               </p>
@@ -57,10 +59,10 @@ app.get("/posts/:postId", async ({ params: { postId } }) => {
   const post = allPosts[postId as unknown as number];
   return (
     <BaseHTML title={post.title.substring(0, 10)}>
-      <h1 class={"w-screen flex justify-center text-4xl"}>
+      <h1 safe class={"w-screen flex justify-center text-4xl"}>
         {post.title as string}
       </h1>
-      <p class={"w-screen flex justify-center text-md"}>
+      <p safe class={"w-screen flex justify-center text-md"}>
         {post.body as string}
       </p>
       <br />
